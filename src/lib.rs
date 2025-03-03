@@ -1,4 +1,4 @@
-//! [`embedded-graphics`] driver for the VEX V5
+//! [`embedded-graphics`] Driver for the VEX V5
 //! 
 //! [`embedded-graphics`]: https://crates.io/crates/embedded-graphics
 //! 
@@ -52,7 +52,7 @@
 //! 
 //! Check out the [`embedded-graphics` docs] for more examples.
 //! 
-//! [`embedded-graphics` examples]: https://docs.rs/embedded-graphics/latest/embedded_graphics/examples/index.html
+//! [`embedded-graphics` docs]: https://docs.rs/embedded-graphics/latest/embedded_graphics/examples/index.html
 
 #![no_std]
 
