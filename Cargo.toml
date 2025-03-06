@@ -9,7 +9,7 @@ authors = [
   "Tropical",
 ]
 license = "MIT"
-keywords = ["vex", "vexide", "vex-robotics", "robotics", "embedded-graphics", "graphics", "bindings"]
+keywords = ["vex", "vexide", "vex-robotics", "embedded-graphics", "graphics"]
 version = "0.1.0"
 edition = "2021"
 
