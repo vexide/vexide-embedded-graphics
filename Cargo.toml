@@ -24,12 +24,12 @@ targets = ["armv7a-none-eabi"]
 
 [dependencies]
 # TODO: also update this
-vexide = { version = "0.7.0-rc.1", default-features = false, features = [
+vexide = { version = "0.7.0", default-features = false, features = [
   "devices",
 ] }
 embedded-graphics-core = "0.4.0"
 vex-sdk = "0.26.0"
 
 [dev-dependencies]
-vexide = "0.7.0-rc.1"
+vexide = "0.7.0"
 embedded-graphics = "0.8.1"
