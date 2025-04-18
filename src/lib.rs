@@ -1,44 +1,44 @@
 //! [`embedded-graphics`] Driver for the VEX V5
-//! 
+//!
 //! [`embedded-graphics`]: https://crates.io/crates/embedded-graphics
-//! 
+//!
 //! This crate provides a [`DrawTarget`] implementation for the VEX V5 brain display,
 //! allowing you to draw to the display using the `embedded-graphics` ecosystem.
-//! 
+//!
 //! # Usage
-//! 
+//!
 //! To begin, turn your `display` peripheral into a [`DisplayDriver`]:
-//! 
+//!
 //! ```
 //! #![no_std]
 //! #![no_main]
-//! 
+//!
 //! use vexide::prelude::*;
 //! use vexide_embedded_graphics::DisplayDriver;
-//! 
+//!
 //! #[vexide::main]
 //! async fn main(peripherals: Peripherals) {
 //!     let mut display = DisplayDriver::new(peripherals.display);
 //! }
 //! ```
-//! 
+//!
 //! [`DisplayDriver`] is a [`DrawTarget`] that the `embedded-graphics` crate is
 //! able to draw to.
-//! 
+//!
 //! ```
 //! #![no_std]
 //! #![no_main]
-//! 
+//!
 //! use vexide::prelude::*;
 //! use vexide_embedded_graphics::DisplayDriver;
-//! 
+//!
 //! use embedded_graphics::{
 //!     mono_font::{ascii::FONT_6X10, MonoTextStyle},
 //!     pixelcolor::Rgb888,
 //!     prelude::*,
 //!     text::Text,
 //! };
-//! 
+//!
 //! #[vexide::main]
 //! async fn main(peripherals: Peripherals) {
 //!     let mut display = DisplayDriver::new(peripherals.display);
@@ -49,9 +49,9 @@
 //!         .unwrap();
 //! }
 //! ```
-//! 
+//!
 //! Check out the [`embedded-graphics` docs] for more examples.
-//! 
+//!
 //! [`embedded-graphics` docs]: https://docs.rs/embedded-graphics/latest/embedded_graphics/examples/index.html
 
 #![no_std]
@@ -77,10 +77,15 @@ pub struct DisplayDriver {
 
 impl DisplayDriver {
     /// Create a new [`DisplayDriver`] from a [`Display`].
-    /// 
+    ///
     /// The display peripheral must be moved into this struct,
     /// as it is used to render the display and having multiple
     /// mutable references to it is unsafe.
+    ///
+    /// It is recommended to use a frame buffer like [`embedded_graphics_framebuf`]
+    /// in order to reduce flickering.
+    ///
+    /// [`embedded_graphics_framebuf`]: https://crates.io/crates/embedded-graphics-framebuf
     #[must_use]
     pub fn new(mut display: Display) -> Self {
         display.set_render_mode(vexide::devices::display::RenderMode::DoubleBuffered);
@@ -131,7 +136,7 @@ impl DrawTarget for DisplayDriver {
                 0,
                 0x20,
                 Display::HORIZONTAL_RESOLUTION.into(),
-                Display::VERTICAL_RESOLUTION.into(),
+                0x20 + i32::from(Display::VERTICAL_RESOLUTION),
                 self.triple_buffer.as_mut_ptr(),
                 Display::HORIZONTAL_RESOLUTION.into(),
             );
