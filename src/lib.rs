@@ -89,6 +89,22 @@ impl DisplayDriver {
     pub fn touch_status(&self) -> TouchEvent {
         self.display.touch_status()
     }
+
+    /// Sets the rendering mode of the display
+    pub fn set_render_mode(&mut self, mode: RenderMode) {
+        self.display.set_render_mode(mode);
+    }
+
+    /// Returns the current rendering mode of the display
+    #[must_use]
+    pub fn render_mode(&self) -> RenderMode {
+        self.display.render_mode()
+    }
+
+    /// Renders the display if the rendering mode is set to [`RenderMode::DoubleBuffered`].
+    pub fn render(&mut self) {
+        self.display.render();
+    }
 }
 
 impl OriginDimensions for DisplayDriver {
