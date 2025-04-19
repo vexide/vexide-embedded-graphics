@@ -133,7 +133,10 @@ impl DrawTarget for DisplayDriver {
             {
                 unsafe {
                     vex_sdk::vexDisplayForegroundColor(color.into_storage());
-                    vex_sdk::vexDisplayPixelSet(pos.x as u32, pos.y as u32 + 0x20);
+                    vex_sdk::vexDisplayPixelSet(
+                        pos.x as u32,
+                        Display::HEADER_HEIGHT as u32 + pos.y as u32,
+                    );
                 }
             }
         });
@@ -161,9 +164,9 @@ impl DrawTarget for DisplayDriver {
             unsafe {
                 vexDisplayCopyRect(
                     area.top_left.x,
-                    0x20 + area.top_left.y,
+                    Display::HEADER_HEIGHT as i32 + area.top_left.y,
                     bottom_right.x,
-                    0x20 + bottom_right.y,
+                    Display::HEADER_HEIGHT as i32 + bottom_right.y,
                     self.buffer.as_mut_ptr(),
                     area.size.width as i32,
                 );
@@ -183,9 +186,9 @@ impl DrawTarget for DisplayDriver {
                 vexDisplayForegroundColor(color.into_storage());
                 vexDisplayRectFill(
                     area.top_left.x,
-                    0x20 + area.top_left.y,
+                    Display::HEADER_HEIGHT as i32 + area.top_left.y,
                     bottom_right.x,
-                    bottom_right.y + 0x20,
+                    Display::HEADER_HEIGHT as i32 + bottom_right.y,
                 );
             }
         }
