@@ -142,7 +142,7 @@ impl DrawTarget for DisplayDriver {
     }
 
     // Note: clear is not implemented because vexDisplayErase does not allow
-    // the change of the background color.
+    // changing the background color.
 
     fn fill_contiguous<I>(
         &mut self,
