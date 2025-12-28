@@ -3,15 +3,15 @@ name = "vexide-embedded-graphics"
 description = "embedded-graphics driver for the VEX V5 Brain"
 repository = "https://github.com/vexide/vexide-embedded-graphics/"
 authors = [
-  "vexide",
-  "Gavin Niederman <gavinniederman@gmail.com>",
-  "doinkythederp <doinkythederp@icloud.com>",
-  "Tropical",
+    "vexide",
+    "Gavin Niederman <gavinniederman@gmail.com>",
+    "doinkythederp <doinkythederp@icloud.com>",
+    "Tropical",
 ]
 license = "MIT"
 keywords = ["vex", "vexide", "vex-robotics", "embedded-graphics", "graphics"]
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 
 [package.metadata.v5]
 upload-strategy = "differential"
@@ -23,13 +23,10 @@ compress = true
 targets = ["armv7a-none-eabi"]
 
 [dependencies]
-# TODO: also update this
-vexide = { version = "0.7.0", default-features = false, features = [
-  "devices",
-] }
 embedded-graphics-core = "0.4.0"
-vex-sdk = "0.26.0"
+vex-sdk = "0.28.0"
+vexide = { version = "0.8.0", features = ["full"] }
 
 [dev-dependencies]
-vexide = "0.7.0"
+vexide = "0.8.0"
 embedded-graphics = "0.8.1"

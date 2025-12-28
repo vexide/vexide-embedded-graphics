@@ -43,7 +43,7 @@
 //! async fn main(peripherals: Peripherals) {
 //!     let mut display = DisplayDriver::new(peripherals.display);
 //!     let style = MonoTextStyle::new(&FONT_6X10, Rgb888::GREEN);
-//!     
+//!
 //!     Text::new("Hello,\nRust!", Point::new(2, 28), style)
 //!         .draw(&mut display)
 //!         .unwrap();
@@ -54,12 +54,10 @@
 //!
 //! [`embedded-graphics` docs]: https://docs.rs/embedded-graphics/latest/embedded_graphics/examples/index.html
 
-#![no_std]
-
 use core::convert::Infallible;
 use embedded_graphics_core::{pixelcolor::Rgb888, prelude::*};
 use vex_sdk::{vexDisplayCopyRect, vexDisplayForegroundColor, vexDisplayRectFill};
-use vexide::devices::display::{Display, RenderMode, TouchEvent};
+use vexide::display::{Display, RenderMode, TouchEvent};
 
 /// An embedded-graphics draw target for the V5 Brain display
 /// Currently, this does not support touch detection like the regular [`Display`] API.

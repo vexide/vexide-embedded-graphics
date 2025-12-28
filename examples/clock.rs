@@ -6,27 +6,21 @@
 //!
 //! This example is based on the `embedded-graphics` example `clock.rs`.
 
-#![no_std]
-#![no_main]
-
-use alloc::format;
+use std::time::Instant;
 use vexide::{
-    devices::display::{RenderMode, TouchState},
+    display::{RenderMode, TouchState},
     prelude::*,
-    time::Instant,
 };
 use vexide_embedded_graphics::DisplayDriver;
 
 use core::f32::consts::PI;
 use embedded_graphics::{
-    mono_font::{ascii::FONT_9X15, MonoTextStyle},
+    mono_font::{MonoTextStyle, ascii::FONT_9X15},
     pixelcolor::Rgb888,
     prelude::*,
     primitives::{Circle, Line, PrimitiveStyle, PrimitiveStyleBuilder, Rectangle},
     text::Text,
 };
-
-extern crate alloc;
 
 /// The margin between the clock face and the display border.
 const MARGIN: u32 = 10;
