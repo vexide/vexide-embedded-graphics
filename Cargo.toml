@@ -29,8 +29,8 @@ cargo-args = [
 [dependencies]
 embedded-graphics-core = "0.4.0"
 vex-sdk = "0.28.0"
-vexide = { version = "0.8.0", features = ["full"] }
+vexide = "0.8.0"
 
 [dev-dependencies]
-vexide = "0.8.0"
 embedded-graphics = "0.8.1"
+vexide = { version = "0.8.0", features = ["full"] }
