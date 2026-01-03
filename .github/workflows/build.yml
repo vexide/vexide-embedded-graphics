@@ -5,18 +5,13 @@ on: [push, pull_request]
 jobs:
   check:
     name: Check
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Setup | Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
 
       - name: Setup | Toolchain
-        uses: dtolnay/rust-toolchain@master
-        with:
-          toolchain: nightly-2024-02-07
-          components: rust-src
+        run: rustup toolchain install --profile minimal
 
       - name: Check
-        uses: actions-rs/cargo@v1
-        with:
-          command: check
+        run: cargo check --target=armv7a-vex-v5
